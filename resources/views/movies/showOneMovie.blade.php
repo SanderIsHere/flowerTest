@@ -9,22 +9,22 @@
       <!-- back to list button -->
       <div class="mb-3">
         <a href="{{ route('movies.searchAll') }}" class="btn btn-secondary">
-          ← Back to Movies
+          ← {{ __('messages.back_to_movies') }}
         </a>
       </div>
 
       <!-- movie details -->
       <div class="card">
         <div class="card-header">
-          <h3>{{ $movie['Title'] ?? 'Movie Detail' }}</h3>
+          <h3>{{ $movie['Title'] ?? __('messages.movie_detail') }}</h3>
         </div>
         <div class="card-body">
 
-          <!-- Cek apakah data movie ada --}} -->
+          <!-- Cek apakah data movie ada -->
           @if(isset($movie['Title']))
 
           <div class="row">
-            <!-- Kolom kiri: Poster --}} -->
+            <!-- Kolom kiri: Poster -->
             <div class="col-md-4">
               <img
                 src="{{ $movie['Poster'] != 'N/A' ? $movie['Poster'] : 'https://via.placeholder.com/300x450?text=No+Poster' }}"
@@ -38,32 +38,32 @@
 
               <!-- Year, Rating, Runtime  -->
               <p class="text-muted">
-                <strong>Year:</strong> {{ $movie['Year'] ?? 'N/A' }} |
-                <strong>Rated:</strong> {{ $movie['Rated'] ?? 'N/A' }} |
-                <strong>Runtime:</strong> {{ $movie['Runtime'] ?? 'N/A' }}
+                <strong>{{ __('messages.year') }}:</strong> {{ $movie['Year'] ?? __('messages.not_available') }} |
+                <strong>{{ __('messages.rated') }}:</strong> {{ $movie['Rated'] ?? __('messages.not_available') }} |
+                <strong>{{ __('messages.runtime') }}:</strong> {{ $movie['Runtime'] ?? __('messages.not_available') }}
               </p>
 
               <hr>
 
               <!-- Genre -->
               <p>
-                <strong>Genre:</strong>
-                <span class="badge bg-primary">{{ $movie['Genre'] ?? 'N/A' }}</span>
+                <strong>{{ __('messages.genre') }}:</strong>
+                <span class="badge bg-primary">{{ $movie['Genre'] ?? __('messages.not_available') }}</span>
               </p>
 
               <!-- Director -->
-              <p><strong>Director:</strong> {{ $movie['Director'] ?? 'N/A' }}</p>
+              <p><strong>{{ __('messages.director') }}:</strong> {{ $movie['Director'] ?? __('messages.not_available') }}</p>
 
               <!-- Actors  -->
-              <p><strong>Actors:</strong> {{ $movie['Actors'] ?? 'N/A' }}</p>
+              <p><strong>{{ __('messages.actors') }}:</strong> {{ $movie['Actors'] ?? __('messages.not_available') }}</p>
 
-              <!-- -  Plot  -->
-              <p><strong>Plot:</strong></p>
-              <p class="text-justify">{{ $movie['Plot'] ?? 'No plot available.' }}</p>
+              <!-- Plot  -->
+              <p><strong>{{ __('messages.plot') }}:</strong></p>
+              <p class="text-justify">{{ $movie['Plot'] ?? __('messages.no_plot') }}</p>
 
               <!-- Ratings -->
               @if(isset($movie['Ratings']) && count($movie['Ratings']) > 0)
-              <p><strong>Ratings:</strong></p>
+              <p><strong>{{ __('messages.ratings') }}:</strong></p>
               <ul class="list-unstyled">
                 @foreach($movie['Ratings'] as $rating)
                 <li>
@@ -76,7 +76,7 @@
               <!-- IMDb Rating  -->
               @if(isset($movie['imdbRating']))
               <p>
-                <strong>IMDb Rating:</strong>
+                <strong>{{ __('messages.imdb_rating') }}:</strong>
                 <span class="badge bg-warning text-dark">
                   ⭐ {{ $movie['imdbRating'] }}/10
                 </span>
@@ -86,21 +86,21 @@
               <!-- IMDb Votes -->
               @if(isset($movie['imdbVotes']))
               <p>
-                <strong>IMDb Votes:</strong> {{ $movie['imdbVotes'] }}
+                <strong>{{ __('messages.imdb_votes') }}:</strong> {{ $movie['imdbVotes'] }}
               </p>
               @endif
 
               <!-- Box Office -->
               @if(isset($movie['BoxOffice']) && $movie['BoxOffice'] != 'N/A')
               <p>
-                <strong>Box Office:</strong> {{ $movie['BoxOffice'] }}
+                <strong>{{ __('messages.box_office') }}:</strong> {{ $movie['BoxOffice'] }}
               </p>
               @endif
 
               <!-- awards -->
               @if(isset($movie['Awards']) && $movie['Awards'] != 'N/A')
               <p>
-                <strong>Awards:</strong>
+                <strong>{{ __('messages.awards') }}:</strong>
                 <span class="text-success">🏆 {{ $movie['Awards'] }}</span>
               </p>
               @endif
@@ -111,7 +111,7 @@
           @else
           <!-- if movie not found or invalid -->
           <div class="alert alert-danger">
-            Movie not found or invalid IMDb ID.
+            {{ __('messages.movie_not_found') }}
           </div>
           @endif
 

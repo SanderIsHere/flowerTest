@@ -10,7 +10,7 @@
 
       <!-- Card untuk form search -->
       <div class="card mb-4">
-        <div class="card-header">{{ __('Search Movies') }}</div>
+        <div class="card-header">{{ __('messages.search_movies') }}</div>
         <div class="card-body">
           {{-- Form search movies --}}
           <form action="{{ route('movies.searchAll') }}" method="GET">
@@ -20,11 +20,11 @@
                 type="text"
                 name="search"
                 class="form-control"
-                placeholder="Search movies..."
+                placeholder="{{ __('messages.search_placeholder') }}"
                 value="{{ $keysearch }}">
 
               <!-- submit button -->
-              <button class="btn btn-primary" type="submit">Search</button>
+              <button class="btn btn-primary" type="submit">{{ __('messages.search_button') }}</button>
             </div>
           </form>
         </div>
@@ -33,7 +33,7 @@
       <!-- search result card -->
       <div class="card">
         <div class="card-header">
-          Search Results for "{{ $keysearch }}"
+          {{ __('messages.search_results') }} "{{ $keysearch }}"
         </div>
         <div class="card-body">
 
@@ -62,7 +62,7 @@
                   <a
                     href="{{ route('movies.movieDetail', $movie['imdbID']) }}"
                     class="btn btn-primary btn-sm">
-                    View Detail
+                    {{ __('messages.view_detail') }}
                   </a>
                 </div>
               </div>
@@ -73,7 +73,7 @@
           @else
           <!-- if result is nothing -->
           <div class="alert alert-warning">
-            Movies not found
+            {{ __('messages.no_movies') }}
           </div>
           @endif
 

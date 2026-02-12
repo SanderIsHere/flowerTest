@@ -21,3 +21,6 @@ Route::middleware(['auth'])->group(function () {
     // for detail movie
     Route::get('/movies/{omdbID}', [MovieController::class, 'showOneMovie'])->name('movies.movieDetail');
 });
+
+// Switch language route (bisa diakses tanpa login)
+Route::get('/lang/{lang}', [App\Http\Controllers\LanguageController::class, 'switchLang'])->name('lang.switch');
