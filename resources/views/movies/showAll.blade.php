@@ -15,7 +15,7 @@
           {{-- Form search movies --}}
           <form action="{{ route('movies.searchAll') }}" method="GET">
             <div class="input-group">
-              {{-- Input text untuk keyword --}}
+              <!-- Input text untuk keyword -->
               <input
                 type="text"
                 name="search"
@@ -42,23 +42,23 @@
 
           <!-- for show all movies in grid -->
           <div class="row">
-            {{-- Loop semua movies --}}
+            <!-- Loop semua movies  -->
             @foreach($movies['Search'] as $movie)
             <div class="col-md-3 mb-4">
               <div class="card h-100">
-                {{-- Poster movie --}}
+                <!-- Poster movie  -->
                 <img
                   src="{{ $movie['Poster'] != 'N/A' ? $movie['Poster'] : 'https://via.placeholder.com/300x450?text=No+Poster' }}"
                   class="card-img-top"
                   alt="{{ $movie['Title'] }}">
                 <div class="card-body">
-                  {{-- Title --}}
+                  <!-- Title -->
                   <h5 class="card-title">{{ $movie['Title'] }}</h5>
                   {{-- Year --}}
                   <p class="card-text">
                     <small class="text-muted">{{ $movie['Year'] }}</small>
                   </p>
-                  {{-- Link ke detail --}}
+                  <!-- Link to details -->
                   <a
                     href="{{ route('movies.movieDetail', $movie['imdbID']) }}"
                     class="btn btn-primary btn-sm">
